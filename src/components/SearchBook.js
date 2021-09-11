@@ -11,7 +11,7 @@ class SearchBook extends React.Component {
 
     updateQuery = (query) => {
         this.setState(() => ({
-            query: query.trim()
+            query: query
         }))
 
         if (this.state.query.length <= 0) {
@@ -19,7 +19,7 @@ class SearchBook extends React.Component {
                 foundBooks: []
             }))
         } else {
-            BooksAPI.search(this.state.query)
+            BooksAPI.search(this.state.query.trim())
                 .then(books => {
                     if (books.error) {
                         this.setState({foundBooks: []})
